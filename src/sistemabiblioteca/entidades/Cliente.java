@@ -5,27 +5,30 @@
  */
 package sistemabiblioteca.entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Indiara
  */
 public class Cliente {
-    private Integer codigo;
+    private String cpf;
     private String nome;
-    private Livro livros;
+    private ArrayList<Livro> livros;
 
-    public Cliente(Integer codigo, String nome) {
-        this.codigo = codigo;
+    public Cliente(String codigo, String nome) {
+        this.cpf = codigo;
         this.nome = nome;
+        this.livros= new ArrayList<>();
     }
 
         
-    public Integer getCodigo() {
-        return codigo;
+    public String getCPF() {
+        return cpf;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public void setCPF(String codigo) {
+        this.cpf = codigo;
     }
 
     public String getNome() {
@@ -36,12 +39,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public Livro getLivros() {
+    public ArrayList<Livro> getLivros() {
         return livros;
     }
 
-    public void setLivros(Livro livros) {
-        this.livros = livros;
+    public void setLivros(Livro livro) {
+        livros.add(livro);
     }
     
     

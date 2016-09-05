@@ -10,33 +10,39 @@ package sistemabiblioteca.entidades;
  * @author Indiara
  */
 public class Livro {
-    private Integer codigo;
-    private String nome;
+    private String codigo;
+    private String titulo;
     private String descricao;
     private boolean status;
+    private Cliente cliente;
 
-    public Livro(Integer codigo, String nome, String descricao) {
+    public Livro(String codigo, String nome, String descricao) {
         this.codigo = codigo;
-        this.nome = nome;
+        this.titulo = nome;
         this.descricao = descricao;
         
     }
+    
+    public Livro(String nome, String descricao){
+        this.titulo=nome;
+        this.descricao=descricao;
+    }
 
         
-    public Integer getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String nome) {
+        this.titulo = nome;
     }
 
     public String getDescricao() {
@@ -53,6 +59,18 @@ public class Livro {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
     

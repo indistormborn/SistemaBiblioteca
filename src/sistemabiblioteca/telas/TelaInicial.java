@@ -5,17 +5,24 @@
  */
 package sistemabiblioteca.telas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import sistemabiblioteca.controladores.Controlador;
+
 /**
  *
  * @author Indiara
  */
 public class TelaInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaInicial
-     */
-    public TelaInicial() {
+    private Controlador controlador;
+    public GerenciadorEventos gerenciador;
+    public TelaInicial(Controlador ctrl) {
+        this.gerenciador = new GerenciadorEventos();
+        this.controlador=ctrl;
         initComponents();
+        setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -31,10 +38,10 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         painelBotoes = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        emprestimo = new javax.swing.JButton();
+        clientes = new javax.swing.JButton();
+        devolucao = new javax.swing.JButton();
+        livros = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,27 +52,25 @@ public class TelaInicial extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setText("Gerenciamento de Bibliotecas");
 
-        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jButton1.setText("Empréstimo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        emprestimo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        emprestimo.setActionCommand(emprestimo.getText());
+        emprestimo.setText("Empréstimo");
+        emprestimo.addActionListener((ActionListener) gerenciador);
 
-        jButton4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jButton4.setText("Clientes");
+        clientes.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        clientes.setText("Clientes");
+        clientes.setActionCommand(clientes.getText());
+        clientes.addActionListener((ActionListener)gerenciador);
 
-        jButton2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jButton2.setText("Devolução");
+        devolucao.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        devolucao.setText("Devolução");
+        devolucao.setActionCommand(devolucao.getText());
+        devolucao.addActionListener((ActionListener) gerenciador);
 
-        jButton3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jButton3.setText("Livros");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        livros.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        livros.setText("Livros");
+        livros.setActionCommand(livros.getText());
+        livros.addActionListener((ActionListener)gerenciador);
 
         javax.swing.GroupLayout painelBotoesLayout = new javax.swing.GroupLayout(painelBotoes);
         painelBotoes.setLayout(painelBotoesLayout);
@@ -81,13 +86,13 @@ public class TelaInicial extends javax.swing.JFrame {
                             .addGroup(painelBotoesLayout.createSequentialGroup()
                                 .addGap(104, 104, 104)
                                 .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(emprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(devolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(painelBotoesLayout.createSequentialGroup()
                                 .addGap(108, 108, 108)
                                 .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
+                                    .addComponent(livros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(clientes, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
                         .addGap(0, 106, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -95,15 +100,15 @@ public class TelaInicial extends javax.swing.JFrame {
             painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelBotoesLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jButton1)
+                .addComponent(emprestimo)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(devolucao)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(clientes)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(livros)
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
@@ -144,58 +149,39 @@ public class TelaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaInicial().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton clientes;
+    private javax.swing.JButton devolucao;
+    private javax.swing.JButton emprestimo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton livros;
     private javax.swing.JPanel painelBotoes;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
+
+
+
+public class GerenciadorEventos implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            if(event.getActionCommand().equals(emprestimo.getActionCommand())){
+                controlador.setTelaEmprestimo();
+            }else if(event.getActionCommand().equals(clientes.getActionCommand())){
+                controlador.setTelaClientes();
+            }else if(event.getActionCommand().equals(devolucao.getActionCommand())){
+                controlador.setTelaDevolucao();
+            }else if(event.getActionCommand().equals(livros.getActionCommand())){
+                controlador.setTelaLivros();
+            }
+        }
+    
+}
 }
