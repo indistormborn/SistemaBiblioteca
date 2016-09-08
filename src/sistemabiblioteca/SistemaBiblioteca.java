@@ -21,13 +21,7 @@ public class SistemaBiblioteca {
      */
     public static void main(String[] args) {
         Controlador ctrl = new Controlador();
-       /* System.out.println(ctrl.geraDataDevolucao().get(Calendar.DAY_OF_MONTH) + "/" + ctrl.geraDataDevolucao().get(Calendar.MONTH) + "/" + ctrl.geraDataDevolucao().get(Calendar.YEAR));
-        Calendar c = Calendar.getInstance();
-        c.setTime(ctrl.geraDataEmprestimo());
-        System.out.println(c.get(Calendar.DATE));
-        System.out.println(c.get(Calendar.MONTH)); // janeiro é 0
-        System.out.println(c.get(Calendar.YEAR));*/
-        ctrl.inicia();
+      ctrl.inicia();
 
     }
 

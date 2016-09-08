@@ -7,9 +7,12 @@ package sistemabiblioteca.telas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import sistemabiblioteca.controladores.Controlador;
+import sistemabiblioteca.entidades.Livro;
 
 /**
  *
@@ -21,9 +24,11 @@ public class TelaCadastroLivros extends javax.swing.JFrame {
      * Creates new form TelaCadastroLivros
      */
     private Controlador controlador;
+    private GerenciadorEventos gerenciador;
     public TelaCadastroLivros(Controlador ctrl) {
-        initComponents();
+        this.gerenciador=new GerenciadorEventos();
         this.controlador=ctrl;
+        initComponents();
         setLocationRelativeTo(null);
     }
 
@@ -65,14 +70,21 @@ public class TelaCadastroLivros extends javax.swing.JFrame {
             }
         });
 
+        codigotf.setEditable(false);
+        codigotf.setText(controlador.geradorCodigo());
+
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel4.setText("Descrição");
 
         cadastrar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         cadastrar.setText("Cadastrar");
+        cadastrar.setActionCommand(cadastrar.getText());
+        cadastrar.addActionListener((ActionListener)gerenciador);
 
         limpar.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         limpar.setText("Limpar");
+        limpar.setActionCommand(limpar.getText());
+        limpar.addActionListener((ActionListener) gerenciador);
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -171,9 +183,7 @@ public class TelaCadastroLivros extends javax.swing.JFrame {
     private javax.swing.JButton limpar;
     // End of variables declaration//GEN-END:variables
 
-    public void setCodigo(String codigo){
-        codigotf.setText(codigo);
-    }
+    
 
     public JTextField getCodigotf() {
         return codigotf;
@@ -187,13 +197,22 @@ public class TelaCadastroLivros extends javax.swing.JFrame {
         return jTextField1;
     }
 
+   
+    
     
     
     public class GerenciadorEventos implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent event) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            if(event.getActionCommand().equals(limpar.getActionCommand())){
+                controlador.limparCamposLivro();
+            }else if(event.getActionCommand().equals(cadastrar.getActionCommand())){
+                controlador.cadastrarLivro(codigotf.getText(), jTextField1.getText(), jTextArea1.getText());
+                controlador.limparCamposLivro();
+                JOptionPane.showMessageDialog(null, "Livro cadastrado com sucesso!");
+
+                }
         }
         
     }

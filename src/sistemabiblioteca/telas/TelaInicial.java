@@ -179,6 +179,7 @@ public class GerenciadorEventos implements ActionListener{
             }else if(event.getActionCommand().equals(devolucao.getActionCommand())){
                 controlador.setTelaDevolucao();
             }else if(event.getActionCommand().equals(livros.getActionCommand())){
+                controlador.getTelaLivros().getCodigotf().setText(controlador.geradorCodigo());
                 controlador.setTelaLivros();
             }
         }

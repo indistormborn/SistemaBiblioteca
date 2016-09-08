@@ -14,12 +14,15 @@ public class Livro {
     private String titulo;
     private String descricao;
     private boolean status;
-    private Cliente cliente;
 
     public Livro(String codigo, String nome, String descricao) {
         this.codigo = codigo;
         this.titulo = nome;
         this.descricao = descricao;
+        
+    }
+    
+    public Livro(){
         
     }
     
@@ -65,14 +68,6 @@ public class Livro {
         return status;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-    
     
     
 }

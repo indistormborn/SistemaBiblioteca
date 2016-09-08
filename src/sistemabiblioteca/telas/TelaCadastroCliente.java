@@ -22,10 +22,11 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
      */
     private Controlador controlador;
     private GerenciadorEventos gerenciador;
+
     public TelaCadastroCliente(Controlador ctrl) {
-        
-        this.controlador=ctrl;
-        this.gerenciador=new GerenciadorEventos();
+
+        this.controlador = ctrl;
+        this.gerenciador = new GerenciadorEventos();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -134,7 +135,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cadastrar;
@@ -146,26 +146,28 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JButton limpar;
     private javax.swing.JTextField nometf;
     // End of variables declaration//GEN-END:variables
-    public JTextField getNome(){
+    public JTextField getNome() {
         return nometf;
     }
-    public JTextField getCPF(){
+
+    public JTextField getCPF() {
         return cpftf;
     }
-    
-    public class GerenciadorEventos implements ActionListener{
+
+    public class GerenciadorEventos implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent event) {
-            if(event.getActionCommand().equals(limpar.getActionCommand())){
+            if (event.getActionCommand().equals(limpar.getActionCommand())) {
                 controlador.limparCamposCliente();
-            }else if(event.getActionCommand().equals(cadastrar.getActionCommand())){
+            } else if (event.getActionCommand().equals(cadastrar.getActionCommand())) {
                 controlador.cadastrarCliente(cpftf.getText(), nometf.getText());
-                JOptionPane.showConfirmDialog(null,"Usuário cadastrado com sucesso!","Cadastro realizado!",JOptionPane.INFORMATION_MESSAGE);
                 controlador.limparCamposCliente();
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+
             }
         }
-        
+
     }
-    
+
 }

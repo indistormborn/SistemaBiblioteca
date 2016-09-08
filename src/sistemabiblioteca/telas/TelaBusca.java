@@ -5,7 +5,10 @@
  */
 package sistemabiblioteca.telas;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import sistemabiblioteca.controladores.Controlador;
+import sistemabiblioteca.entidades.Livro;
 
 /**
  *
@@ -17,11 +20,13 @@ public class TelaBusca extends javax.swing.JFrame {
      * Creates new form TelaBusca
      */
     private Controlador controlador;
+
     public TelaBusca(Controlador ctrl) {
+        this.controlador = ctrl;
         initComponents();
-        this.controlador=controlador;
+
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -51,7 +56,7 @@ public class TelaBusca extends javax.swing.JFrame {
         jLabel1.setText("Consulta de Livros");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Nome");
+        jLabel2.setText("Titulo");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,31 +76,12 @@ public class TelaBusca extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Titulo", "Codigo", "Disponibilidade"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jTable1.setColumnSelectionAllowed(true);
         jScrollPane2.setViewportView(jTable1);
         jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-        }
 
         retirar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         retirar.setText("Retirar");
@@ -201,29 +187,46 @@ public class TelaBusca extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void retirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retirarActionPerformed
-        // TODO add your handling code here:
+        controlador.selecionarLivro();
+        controlador.getTelaBusca().dispose();
+        
     }//GEN-LAST:event_retirarActionPerformed
 
     private void fecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecharActionPerformed
-        // TODO add your handling code here:
+        if (evt.getActionCommand().equals(fechar.getActionCommand())) {
+            controlador.getTelaBusca().dispose();
+        }
     }//GEN-LAST:event_fecharActionPerformed
 
     private void pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisarActionPerformed
-        // TODO add your handling code here:
+        if (evt.getActionCommand().equals(pesquisar.getActionCommand())) {
+            controlador.atualizaPesquisaLivros(jTextField1.getText());
+            if(jTextField1.getText().equals("")){
+                controlador.atualizaListaLivros();
+            }
+        }
     }//GEN-LAST:event_pesquisarActionPerformed
 
     private void removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerActionPerformed
-        // TODO add your handling code here:
+        if (evt.getActionCommand().equals(remover.getActionCommand())) {
+            int row = jTable1.getSelectedRow();
+            controlador.removerLivro(jTable1.getValueAt(row, 1).toString());
+            controlador.atualizaListaLivros();
+        }
     }//GEN-LAST:event_removerActionPerformed
 
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
-        // TODO add your handling code here:
+        if (evt.getActionCommand().equals(alterar.getActionCommand())) {
+            int row = jTable1.getSelectedRow();
+            controlador.getTelaAlteracao().getCodigo().setText(jTable1.getValueAt(row, 1).toString());
+            controlador.getTelaAlteracao().setVisible(true);
+
+        }
     }//GEN-LAST:event_alterarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterar;
@@ -238,4 +241,9 @@ public class TelaBusca extends javax.swing.JFrame {
     private javax.swing.JButton remover;
     private javax.swing.JButton retirar;
     // End of variables declaration//GEN-END:variables
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
 }
