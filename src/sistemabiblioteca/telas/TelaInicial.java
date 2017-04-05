@@ -61,6 +61,11 @@ public class TelaInicial extends javax.swing.JFrame {
         clientes.setText("Clientes");
         clientes.setActionCommand(clientes.getText());
         clientes.addActionListener((ActionListener)gerenciador);
+        clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientesActionPerformed(evt);
+            }
+        });
 
         devolucao.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         devolucao.setText("Devolução");
@@ -148,6 +153,10 @@ public class TelaInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clientesActionPerformed
 
     /**
      * @param args the command line arguments
