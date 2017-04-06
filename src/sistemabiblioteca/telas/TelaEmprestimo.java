@@ -352,7 +352,6 @@ public class TelaEmprestimo extends javax.swing.JFrame {
             }else if(event.getActionCommand().equals(emprestar.getActionCommand())){
                 controlador.emprestar(codigo.getText(), cpf.getText());
                 controlador.limparCamposEmprestimo();
-                JOptionPane.showMessageDialog(null, "Emprestimo realizado com sucesso!");
             }
         }
     }

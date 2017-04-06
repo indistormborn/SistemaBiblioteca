@@ -251,7 +251,7 @@ public class Controlador {
     public Calendar geraDataDevolucao() {
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(geraDataEmprestimo());
-        calendario.add(Calendar.DATE, +7);
+        calendario.add(Calendar.DATE, +14);
         return calendario;
     }
 

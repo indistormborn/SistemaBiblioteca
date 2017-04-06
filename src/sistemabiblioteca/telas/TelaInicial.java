@@ -37,12 +37,14 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        painelBotoes = new javax.swing.JPanel();
+        painelGeral = new javax.swing.JPanel();
         emprestimo = new javax.swing.JButton();
-        clientes = new javax.swing.JButton();
         devolucao = new javax.swing.JButton();
+        consulta = new javax.swing.JButton();
+        painelAdm = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         livros = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        clientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,14 +58,9 @@ public class TelaInicial extends javax.swing.JFrame {
         emprestimo.setActionCommand(emprestimo.getText());
         emprestimo.setText("Empréstimo");
         emprestimo.addActionListener((ActionListener) gerenciador);
-
-        clientes.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        clientes.setText("Clientes");
-        clientes.setActionCommand(clientes.getText());
-        clientes.addActionListener((ActionListener)gerenciador);
-        clientes.addActionListener(new java.awt.event.ActionListener() {
+        emprestimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clientesActionPerformed(evt);
+                emprestimoActionPerformed(evt);
             }
         });
 
@@ -72,49 +69,71 @@ public class TelaInicial extends javax.swing.JFrame {
         devolucao.setActionCommand(devolucao.getText());
         devolucao.addActionListener((ActionListener) gerenciador);
 
-        livros.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        livros.setText("Livros");
-        livros.setActionCommand(livros.getText());
-        livros.addActionListener((ActionListener)gerenciador);
+        consulta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        consulta.setText("Consultar");
+        consulta.setActionCommand(consulta.getText());
+        consulta.addActionListener((ActionListener) gerenciador);
 
-        javax.swing.GroupLayout painelBotoesLayout = new javax.swing.GroupLayout(painelBotoes);
-        painelBotoes.setLayout(painelBotoesLayout);
-        painelBotoesLayout.setHorizontalGroup(
-            painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelBotoesLayout.createSequentialGroup()
-                .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBotoesLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1))
-                    .addGroup(painelBotoesLayout.createSequentialGroup()
-                        .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painelBotoesLayout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(emprestimo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(devolucao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(painelBotoesLayout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addGroup(painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(livros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(clientes, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
-                        .addGap(0, 106, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        painelBotoesLayout.setVerticalGroup(
-            painelBotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelBotoesLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+        devolucao.setActionCommand(devolucao.getText());
+        devolucao.addActionListener((ActionListener) gerenciador);
+
+        javax.swing.GroupLayout painelGeralLayout = new javax.swing.GroupLayout(painelGeral);
+        painelGeral.setLayout(painelGeralLayout);
+        painelGeralLayout.setHorizontalGroup(
+            painelGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGeralLayout.createSequentialGroup()
                 .addComponent(emprestimo)
-                .addGap(18, 18, 18)
-                .addComponent(devolucao)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(clientes)
-                .addGap(18, 18, 18)
-                .addComponent(livros)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(devolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        painelGeralLayout.setVerticalGroup(
+            painelGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelGeralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emprestimo)
+                    .addComponent(devolucao)
+                    .addComponent(consulta))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel2.setText("Area exclusiva para Administração");
+
+        livros.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        livros.setText("Gerenciar livros");
+        livros.addActionListener((ActionListener) gerenciador);
+
+        clientes.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        clientes.setText("Gerenciar clientes");
+        clientes.addActionListener((ActionListener) gerenciador);
+
+        javax.swing.GroupLayout painelAdmLayout = new javax.swing.GroupLayout(painelAdm);
+        painelAdm.setLayout(painelAdmLayout);
+        painelAdmLayout.setHorizontalGroup(
+            painelAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAdmLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(painelAdmLayout.createSequentialGroup()
+                        .addComponent(livros)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(clientes)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        painelAdmLayout.setVerticalGroup(
+            painelAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelAdmLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painelAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(livros)
+                    .addComponent(clientes))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -122,11 +141,16 @@ public class TelaInicial extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(64, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(painelGeral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(painelAdm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +158,9 @@ public class TelaInicial extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(painelBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelGeral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(painelAdm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -154,9 +180,9 @@ public class TelaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
+    private void emprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emprestimoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_clientesActionPerformed
+    }//GEN-LAST:event_emprestimoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,13 +191,15 @@ public class TelaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clientes;
+    private javax.swing.JButton consulta;
     private javax.swing.JButton devolucao;
     private javax.swing.JButton emprestimo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton livros;
-    private javax.swing.JPanel painelBotoes;
+    private javax.swing.JPanel painelAdm;
+    private javax.swing.JPanel painelGeral;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
@@ -190,6 +218,8 @@ public class GerenciadorEventos implements ActionListener{
             }else if(event.getActionCommand().equals(livros.getActionCommand())){
                 controlador.getTelaLivros().getCodigotf().setText(controlador.geradorCodigo());
                 controlador.setTelaLivros();
+            }else if(event.getActionCommand().equals(consulta.getActionCommand())){
+                controlador.setTelaBusca();
             }
         }
     
